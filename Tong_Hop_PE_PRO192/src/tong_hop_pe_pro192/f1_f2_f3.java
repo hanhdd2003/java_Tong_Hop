@@ -7,7 +7,7 @@
 //7. hoán đổi vị trí của đối tượng có rate min và max đầu tiên cho nhau
 //8. Sort the list by maker alphabetically, 
 //in case makers are the same, sort them descendingly by rate.
-//9. 
+//9. Stream lý thuyết cách dùng
 package tong_hop_pe_pro192;
 
 import java.util.Collections;
@@ -108,10 +108,9 @@ public class f1_f2_f3 {
         return wholePart;
     }*/
 //==================================================
-    
 //--------------------------------77777---------------------------
     // hoán đổi vị trí của đối tượng có rate min và max đầu tiên cho nhau
-   /* public void f2(List<Car1> t) {
+    /* public void f2(List<Car1> t) {
         if (t == null || t.size() < 2) {
             return;
         }
@@ -128,7 +127,6 @@ public class f1_f2_f3 {
         Collections.swap(t, t.indexOf(max), t.indexOf(min));
     }*/
 //=================================================================    
-
 //---------------------------88888-------------------------------------------
     /*public void f3(List<Car1> t) {
         if (t == null || t.size() < 2) {
@@ -140,9 +138,89 @@ public class f1_f2_f3 {
         Comparator<Car1> b = Comparator.comparing((Car1 a) -> a.getMaker().charAt(1)).reversed();
         Collections.sort(t, c);
     }*/
- //=====================================================   
-   
+    //=====================================================   
 //------------------------------9999-----------------------------------------
+    /*Collect method: Dùng để trả về kết quả của stream dưới dạng List hoặc Set.
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("args", "", "code", "learn", "...");
+        List<String> filter = strings.stream().collect(Collectors.toList());
+        System.out.println(filter);
+    }*/
     
+    /*forEach method: Dùng để duyệt qua mọi phần tử trong stream.
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("args", "", "code", "learn", "...");
+        strings.stream().forEach(s -> System.out.println(s));
+    }*/
+
+    /*Reduce method: Reduce() method với 1 trong 2 tham số truyền vào là method reference, dùng dể kết hợp các phần tử thành một giá trị đơn cùng kiểu với dữ liệu ban đầu.
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("args", "", "code", "learn", "...");
+        String result = strings.stream().reduce("-", String::concat);
+        System.out.println(result);
+    }*/
     
+    /*Max, Min method: Trả về giá trị lớn nhất hoặc bé nhất trong các phần tử.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        Integer maxx = list.stream().max(Integer::compare).get();
+        Integer minn = list.stream().min(Integer::compare).get();
+        System.out.println("Max: "+maxx+"\nMin: "+minn);
+    }*/
+    
+    /*Distinct method: Được dùng để loại bỏ các phần tử trùng lặp.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1,2,2,2,2,3,4,5);
+        list.stream().distinct().forEach(System.out::println);
+    }*/
+    
+    /*Map method: Map method được sử dụng để trả về một stream mà ở đó các phần tử đã  được thay đổi theo cách người dùng tự định nghĩa.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1,2,2,2,2,3,4,5);
+        list.stream().distinct().map(i -> i*i).forEach(System.out::println);
+    }*/
+    
+    /*Filter method: Dùng để lọc và xóa bỏ các phần tử với điều kiện do người dùng định nghĩa.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1,2,2,2,2,3,4,5);
+        list.stream().distinct().map(i->i*i).forEach(System.out::println);
+    }*/
+    
+    /*Sorted method: Dùng cho việc sắp xếp các phần tử.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(4,3,2,1,0,3,4,5);
+        list.stream().sorted().forEach(System.out::println);
+    }*/
+    
+    /*Limit method: limit(n) với tham số đầu vào là số nguyên không âm n nó sẽ trả về một stream chứa n phần tử đầu tiên.
+
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(4,3,2,1,0,3,4,5);
+        list.stream().limit(3).forEach(System.out::println);
+    }*/
+    
+    /*Skip method: skip(n) với tham số truyền vào là số nguyên không âm n nó sẽ trả về các phần tử còn lại đằng sau n phần tử đầu tiên.
+
+        List<Integer> list = Arrays.asList(4,3,2,1,0,3,4,5);
+        list.stream().skip(3).forEach(System.out::println);
+  }*/
+    
+    /*ParallelStream là một sự thay thế của stream để phục vụ cho việc xử lý song song các phần tử. Kết quả của đoạn code sau thể hiện sự khác nhau giữa Stream và Parallel Stream.
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("code", "learn", "...");
+        String streamString = strings.stream().reduce(" I'm-", String::concat);
+        String parallelString = strings.parallelStream().reduce(" I'm-", String::concat);
+        System.out.println("Stream: "+streamString +"\nParallelStream: "+parallelString);
+    }*/
+    
+    //===================================================================   
 }
